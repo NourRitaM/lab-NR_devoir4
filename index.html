@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" integrity="sha512-5A8nwdMOWrSz20fDsjczgUidUBR8liPYU+WymTZP1lmY9G6Oc7HlZv156XqnsgNUzTyMefFTcsFH/tnJE/+xBg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- adds a big set of icons like search, cloud, humidity, wind, etc.
+lets you use HTML like:
+<i class="fa fa-search"></i>
+<i class="fa fa-cloud"></i>
+<i class="fa fa-tint"></i>
+<i class="fa fa-thermometer-half"></i>
+In your weather app, it is used so the search button and maybe weather icons can appear as actual icons instead of plain text or images.-->
+    
+    
+    
+    
+    
+    <title>Weather Website</title>
+</head>
+<body>
+    
+    <div class="container">
+
+        <!-- search bar // city input-->
+         
+      <!--  User types the name of a city into the search bar.-->
+        <div class="search">
+            <input id="city" type="text" placeholder="Enter city name" spellcheck="false">
+            <button id="btn">
+                <i class="fa fa-search"></i> <!-- fa fa-search is for the search icon beside the input box-->
+            </button>
+        </div>
+        <!-- END SEARCH BAR -->
+
+           
+        <div class="weather">
+            <img src="img/weather1.png" alt="" class="weather-icon">  <!-- the weather icon ( the sun with the cloud image)-->
+            <h1 class="temp">20°c</h1>   <!-- default value for the webpage so that it displays something when the page loads -->
+            <h2 class="city">Beirut</h2> <!-- default value for the webpage so that it displays something when the page loads -->
+            <div class="details">
+                <div class="col">
+                    <img src="img/weather.png" alt=""> <!-- for the humidity icon -->
+                    <div>
+                        <p class="humidity">50%</p> <!-- default value for the webpage so that it displays something when the page loads -->
+                        <p>Humidity</p>
+                    </div>
+                </div>
+                <div class="col">
+                    <img src="img/wind.png" alt=""> <!-- for the wind icon -->
+                    <div>
+                        <p class="wind">5 Km/h</p> <!-- default value for the webpage so that it displays something when the page loads -->
+                        <p>Wind Speed</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <!--The app fetches weather data from OpenWeatherMap.
+    It displays the city's temperature, humidity, and wind speed instantly.-->
+    <script src="script.js"></script>
+</body>
+</html>
