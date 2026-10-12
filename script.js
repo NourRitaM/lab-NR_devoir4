@@ -1,6 +1,6 @@
 
 // API_KEY comes from config.js (loaded before this file in index.html)
-
+// it's the address of the API , unit= metric ask for the celcius degree and the q= is waiting for the name of the city that the user should add
 const apiUrl = "https://api.openweathermap.org/data/2.5/weather?units=metric&q=";
 
 // get the elements from the HTML page  -> let the manipulation like that be easier and more readable -> use of the DOM (chapter 8)
@@ -8,7 +8,7 @@ const cityInput = document.getElementById("city");
 const searchBtn = document.getElementById("btn");
 const loadingMsg = document.getElementById("loading");
 const errorMsg = document.getElementById("error");
-
+//saem thing but for the class
 const weatherBox = document.querySelector(".weather");
 const weatherIcon = document.querySelector(".weather-icon");
 const tempEl = document.querySelector(".temp");
@@ -18,12 +18,13 @@ const humidityEl = document.querySelector(".humidity");
 const windEl = document.querySelector(".wind");
 
 
-
+// we are disabling the button function here so that the user don't send 13334 request but wait until the first one is done
 function showLoading() {
     loadingMsg.style.display = "block";
-    searchBtn.disabled = true; // in order toavoid sending many requests at once
+    searchBtn.disabled = true; // in order to avoid sending many requests at once
 }
 
+// for when the request is  done , the search button is reactive and we can rewrite the city that we want 
 function hideLoading() {
     loadingMsg.style.display = "none";
     searchBtn.disabled = false;
@@ -42,9 +43,9 @@ function hideError() {
 
 // choose a Font Awesome icon depending on the weather
 function getIconClass(main, iconCode) {
-    const isNight = iconCode.endsWith("n");
+    const isNight = iconCode.endsWith("n"); // the API should end with n for night and d for day
 
-    if (main === "Clear") {
+    if (main === "Clear") {   // if /else fonction to see the type of fa-fa-search weather icon to use on the websitedepending on the weather condition
         return isNight ? "fa fa-moon-o weather-icon" : "fa fa-sun-o weather-icon";
     } else if (main === "Clouds") {
         return "fa fa-cloud weather-icon";
@@ -61,13 +62,13 @@ function getIconClass(main, iconCode) {
 }
 
 // put the API data into the page who do we do it ? we do it by using the DOM to manipulate the HTML elements and put the data into them
-function displayWeather(data) {
-    const main = data.weather[0].main;
-    const description = data.weather[0].description;
-    const iconCode = data.weather[0].icon;
+function displayWeather(data) {  // data is an array that contains the weather data from the API
+    const main = data.weather[0].main; // main is the main weather condition (Clear, Clouds, Rain, etc.)
+    const description = data.weather[0].description;// description is the detailed weather condition (clear sky, few clouds, scattered clouds, etc.)
+    const iconCode = data.weather[0].icon;// iconCode is the code for the weather icon (01d, 02d, 03d, etc.)
 
-    tempEl.textContent = Math.round(data.main.temp) + "°C";
-    cityEl.textContent = data.name + ", " + data.sys.country;
+    tempEl.textContent = Math.round(data.main.temp) + "°C";  // the real temperature might be a float or a double  number so we round it into an integer to be moore clean in the website 
+    cityEl.textContent = data.name + ", " + data.sys.country; // not just the city but the country (as an abreviation of it )
     descriptionEl.textContent = description.charAt(0).toUpperCase() + description.slice(1);
     humidityEl.textContent = data.main.humidity + "%";
     // the API gives wind in m/s, we convert to km/h
@@ -84,10 +85,11 @@ async function checkWeather(city) {
     // 1. check the input
     if (city.trim() === "") {
         showError("Please enter a city name.");
-        return;
+        return;  // that what we see in the sc image 2 
     }
 
     // 2. check that the API key exists (config.js may be missing)
+    // commes from config.js file that is not uploaded to GitHub for security reasons but if the file is missing or the API key is not set, we show an error message to the user
     if (typeof API_KEY === "undefined" || API_KEY === "YOUR_API_KEY_HERE") {
         showError("API key missing. Please create config.js (see README).");
         return;
@@ -97,7 +99,7 @@ async function checkWeather(city) {
 
     try {
         const response = await fetch(apiUrl + encodeURIComponent(city.trim()) + "&appid=" + API_KEY);
-
+        // what we see in the image sc 4 this part is clearly shoown in the devtools in the Network area where we can clearly see that the request is sent to the API and we can see the response from the API in the Network area of the devtools
         // 3. handle non-200 responses explicitly
         if (response.status === 404) {
             throw new Error("City not found. Please check the spelling and try again.");
@@ -110,7 +112,7 @@ async function checkWeather(city) {
         }
 
         const data = await response.json();
-        displayWeather(data);
+        displayWeather(data);  // transforme the data from the API into a format that we can use to display the weather on the page
 
     } catch (error) {
         // fetch throws a TypeError when there is no internet / network problem
