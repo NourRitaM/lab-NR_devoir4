@@ -1,16 +1,16 @@
 # Weather Website
 
-This project is a small weather application built with HTML, CSS, and JavaScript. It fetches real-time data from the OpenWeatherMap API and shows the weather of a city chosen by the user.
+This project is a small weather application built with HTML, CSS, and JavaScript. It fetches real-time data from the OpenWeatherMap API and displays the current weather for a city entered by the user.
 
 ## Project Goal
 
-The app allows the user to type a city name, click the search button, and instantly see the current weather information such as:
+The app allows the user to type a city name, click the search button, and instantly see the current weather conditions, including:
 - temperature
 - city and country
 - weather description
 - humidity
 - wind speed
-- matching icon depending on the weather condition
+- a matching weather icon
 
 The page also loads a default city (Beirut) when it opens, so the user sees weather data immediately.
 
@@ -25,9 +25,9 @@ It includes:
 - the search button
 - the loading message
 - the error message
-- the weather card with temperature, city name, description, humidity and wind speed
+- the weather card with temperature, city name, description, humidity, and wind speed
 
-A Font Awesome CDN link is added so icons like search, cloud, humidity, and wind can be displayed.
+A Font Awesome CDN link is added so icons such as search, cloud, humidity, and wind can be displayed.
 
 ### `styles/style.css`
 This file handles the visual design of the app.
@@ -37,27 +37,27 @@ It includes:
 - search bar styling
 - loading style
 - error message style
-- weather card style
+- weather card styling
 - icon design
 - responsive rules for mobile screens
 
-The CSS also hides the loading and error messages by default, and shows them only when JavaScript triggers them.
+The CSS hides the loading and error messages by default and shows them only when JavaScript triggers them.
 
 ### `script.js`
 This file contains the main logic of the app.
 
 It does the following:
 - creates the API URL
-- gets the HTML elements using `document.getElementById()` and `document.querySelector()`
-- disables the button while a request is being processed
+- retrieves the HTML elements with `document.getElementById()` and `document.querySelector()`
+- disables the search button while a request is being processed
 - shows a loading message while waiting for the response
 - displays an error if the city is empty, invalid, or missing data
 - handles API status codes such as 404, 401, and 429
-- converts the API response into useful information for the webpage
+- converts the API response into usable information for the page
 - updates the text and icons on the screen
 - listens for user actions such as button click and Enter key press
 
-The app also converts wind speed from m/s to km/h to make it easier for the user to understand.
+The app also converts wind speed from m/s to km/h to make it easier for the user to read.
 
 ### `config.js`
 This file stores the API key used to access OpenWeatherMap.
@@ -68,9 +68,9 @@ The comments explain that:
 - it is stored in a file excluded from version control using `.gitignore`
 
 ### `config.example.js`
-This file is a template for the real config file.
+This file is a template for the real configuration file.
 
-It tells the developer to copy it as `config.js` and replace the placeholder key with a real OpenWeatherMap API key.
+It tells the developer to copy it into `config.js` and replace the placeholder key with a real OpenWeatherMap API key.
 
 ## How the App Works
 
@@ -90,21 +90,25 @@ It tells the developer to copy it as `config.js` and replace the placeholder key
 
 The project keeps the API key private and does not upload it to GitHub.
 
-The comments in the project explain that this is important because if someone else gets access to the API key, they could use it for their own requests.
+This is important because if someone else gets access to the API key, they could use it for their own requests.
 
 ## Setup
 
-1. Open the project folder.
-2. Create a file named `config.js` in the root directory.
-3. Copy the content of `config.example.js`.
-4. Replace the placeholder with your own OpenWeatherMap API key.
-5. Open `index.html` in your browser.
+1. Create an account on OpenWeatherMap: https://openweathermap.org/
+2. Log in to your account.
+3. Go to the "My API keys" section in your profile.
+4. Copy your API key.
+5. Create a file named `config.js` in the root folder of the project.
+6. Paste the key in this file.
+7. Open `index.html` in your browser.
 
 Example:
 
 ```js
 const API_KEY = "YOUR_API_KEY_HERE";
 ```
+
+Do not commit or upload `config.js` to GitHub. Keep the key in a local file and make sure it is ignored by `.gitignore`.
 
 ## Notes
 
@@ -120,13 +124,14 @@ This project is a basic front-end weather app used to practice:
 
 The project includes screenshots showing the app in use.
 
-![Weather app screenshot 1](./screenshots/Screenshots%201.png)
-![Weather app screenshot 2](./screenshots/Screenshots%202.png)
-![Weather app screenshot 3](./screenshots/Screenshots%203.png)
-![Weather app screenshot 4](./screenshots/Screenshots%204.png)
-![Weather app screenshot 5](./screenshots/Screenshots%205.png)
-![Weather app screenshot 6](./screenshots/Screenshots%206.png)
-![Weather app screenshot 7](./screenshots/Screenshots%207.png)
+To avoid exposing API keys, the screenshots used in the README were reviewed and only safe examples were kept.
+
+![Weather app screenshot 1](./screenshots/Screenshots_1.png)
+![Weather app screenshot 2](./screenshots/Screenshots_2.png)
+![Weather app screenshot 3](./screenshots/Screenshots_3.png)
+![Weather app screenshot 4](./screenshots/Screenshots_4.png)
+![Weather app screenshot 5](./screenshots/Screenshots_5.png)
+
 
 ## Technologies Used
 
