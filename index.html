@@ -3,20 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="styles/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" integrity="sha512-5A8nwdMOWrSz20fDsjczgUidUBR8liPYU+WymTZP1lmY9G6Oc7HlZv156XqnsgNUzTyMefFTcsFH/tnJE/+xBg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <!-- adds a big set of icons like search, cloud, humidity, wind, etc.
-lets you use HTML like:
-<i class="fa fa-search"></i>
-<i class="fa fa-cloud"></i>
-<i class="fa fa-tint"></i>
-<i class="fa fa-thermometer-half"></i>
-In your weather app, it is used so the search button and maybe weather icons can appear as actual icons instead of plain text or images.-->
-    
-    
-    
-    
-    
+    <!-- this link adds a big set of icons like search, cloud, humidity, wind, etc. can use now in html  like for the search button or for the weather icons.
+in the websites, it is used so the search button and weather icons can appear as actual icons instead of plain text or images.-->
     <title>Weather Website</title>
 </head>
 <body>
@@ -34,21 +24,29 @@ In your weather app, it is used so the search button and maybe weather icons can
         </div>
         <!-- END SEARCH BAR -->
 
+        <!-- Added: message shown while the request is in progress -->
+        <p id="loading" class="loading">Loading...</p>
+
+        <!-- Added: error message (invalid city, network issue, etc.) -->
+        <p id="error" class="error"></p>
+
            
         <div class="weather">
-            <img src="img/weather1.png" alt="" class="weather-icon">  <!-- the weather icon ( the sun with the cloud image)-->
+            <i class="fa fa-cloud weather-icon"></i>  <!-- the weather icon ( the sun with the cloud image)-->
             <h1 class="temp">20°c</h1>   <!-- default value for the webpage so that it displays something when the page loads -->
             <h2 class="city">Beirut</h2> <!-- default value for the webpage so that it displays something when the page loads -->
+            <!-- Added: weather conditions description (e.g. clear sky, light rain) -->
+            <p class="description">Partly cloudy</p>
             <div class="details">
                 <div class="col">
-                    <img src="img/weather.png" alt=""> <!-- for the humidity icon -->
+                    <i class="fa fa-tint"></i> <!-- for the humidity icon -->
                     <div>
                         <p class="humidity">50%</p> <!-- default value for the webpage so that it displays something when the page loads -->
                         <p>Humidity</p>
                     </div>
                 </div>
                 <div class="col">
-                    <img src="img/wind.png" alt=""> <!-- for the wind icon -->
+                    <i class="fa fa-flag"></i> <!-- for the wind icon -->
                     <div>
                         <p class="wind">5 Km/h</p> <!-- default value for the webpage so that it displays something when the page loads -->
                         <p>Wind Speed</p>
@@ -57,11 +55,13 @@ In your weather app, it is used so the search button and maybe weather icons can
             </div>
         </div>
     </div>
-
-
-
+    
     <!--The app fetches weather data from OpenWeatherMap.
     It displays the city's temperature, humidity, and wind speed instantly.-->
+    
+    <!-- Added: contains the API key (this file is NOT uploaded to GitHub) -->
+    <script src="config.js"></script>
     <script src="script.js"></script>
+
 </body>
 </html>
