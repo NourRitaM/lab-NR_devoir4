@@ -83,7 +83,7 @@ async function checkWeather(city) {
         return;
     }
 
-    if (typeof API_KEY === "undefined" || API_KEY === "YOUR_API_KEY_HERE") {
+    if (typeof API_KEY === "undefined" || API_KEY === "7c5ef0bc14328cd48b075c35b3643649") {
         showError("API key missing. Please create config.js (see README).");
         return;
     }
